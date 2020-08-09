@@ -4,10 +4,10 @@ const password = document.getElementById('password');
 
 form.addEventListener('submit',function(event){
     event.preventDefault();
-    let users = {
-        usuario: username.value,
-    };
-    localStorage.setItem('user',users.usuario);
+    //let users = {
+      //  usuario: username.value,
+    //};
+    localStorage.setItem('user',username.value);
     location.href="index.html"
 });
 
