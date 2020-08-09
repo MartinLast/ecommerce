@@ -6,7 +6,6 @@ form.addEventListener('submit',function(event){
     event.preventDefault();
     let users = {
         usuario: username.value,
-        password: password.value
     };
     localStorage.setItem('user',users.usuario);
     location.href="index.html"
