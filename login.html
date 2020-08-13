@@ -82,6 +82,10 @@
       border:white;
       border-width: 20px;
     }
+    .advertencia{
+      color:red;
+      font-size:small;
+    }
   </style>
 
 </head>
@@ -96,10 +100,12 @@
     <h1>Bienvenido/a</h1>
     <form class="form" id="form">
       <p>Usuario</p>
-      <input type="text" id="username" class="form-control" placeholder="Ingrese Usuario" required style='text-align:center'><hr> 
+      <input type="text" id="username" class="form-control" placeholder="Ingrese Usuario" required style='text-align:center'><hr>
+      <span id="advertencia-user" class="advertencia"></span>
       <p>Password</p>
-      <input type="password" id="password" class="form-control" placeholder="Ingrese Contraseña" required style='text-align:center'><br>
-      <input type="submit" value="Ingresar"></button>
+      <input type="password" id="password" class="form-control" placeholder="Ingrese Contraseña" required style='text-align:center'>
+      <span id="advertencia-pass" class="advertencia"></span>
+      <input type="submit" id="submit_login" value="Ingresar"></button>
         <br>
       <a href="#"> ¿Perdió la contraseña?</a><br>
       <a href="#"> ¿No tiene una cuenta?</a>
