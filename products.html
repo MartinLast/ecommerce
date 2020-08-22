@@ -12,15 +12,29 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <style>
+      #deslogear:hover{
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      span{
+        color:white; 
+        text-align:center; 
+        margin:8px 0px 10px 0px;
+      }
+    </style>
   </head>
   <body>
     <nav class="site-header sticky-top py-1 bg-dark">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
+        <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a> 
         <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+        <span>
+          <span class="" id="nombreUsuario"></span>
+          <span class="" id="deslogear"> | Salir </span></span>
       </div>
     </nav>
     <main role="main" class="pb-5">
@@ -32,15 +46,21 @@
           <div class="row">
               <div class="col text-right">
                   <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+                    <label class="btn btn-light" id="sortByRelevanceDesc" >
+                      <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Relevancia.
+                  </label>
                       <label class="btn btn-light active" id="sortAsc" >
                           <input type="radio" name="options" autocomplete="off" checked>A-Z
                       </label>
                       <label class="btn btn-light" id="sortDesc" >
                           <input type="radio" name="options" autocomplete="off">Z-A
                       </label>
-                      <label class="btn btn-light" id="sortByCount" >
+                      <label class="btn btn-light" id="sortByPriceDesc" >
                           <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Precio.
                       </label>
+                      <label class="btn btn-light" id="sortByPriceAsc" >
+                        <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down-alt mr-1"></i>Precio.
+                    </label>
                   </div>
               </div>
           </div>
@@ -86,5 +106,6 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>
     <script src="js/products.js"></script>
+    <script src="js/nombreUsuarioIndex.js"></script>
   </body>
 </html>
