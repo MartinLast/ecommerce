@@ -27,7 +27,7 @@
 
     input[type="search"] {
       outline: 0;
-      width: 100%;
+      width: 30%;
       height: 50%;
       background: var(--color-light);
       padding: 0 1.6rem;
@@ -37,6 +37,7 @@
       transition-property: width, border-radius;
       z-index: 1;
       position: relative;
+      text-align:center;
     }
   </style>
 </head>
@@ -61,7 +62,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <input type="search"  class="btn-group btn-group-toggle mb-4 btn btn-light" id="buscador" placeholder="Realice su búsqueda">
+        <input type="search"  class="mb-4" id="buscador" placeholder="Realice su búsqueda">
         <div class="col text-right">
           <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
             <label class="btn btn-light" id="sortByRelevanceDesc">
