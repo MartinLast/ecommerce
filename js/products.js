@@ -8,6 +8,7 @@ var currentCategoriesArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
+var aBuscar = undefined;
 
 function sortCategories(criteria, array){
     let result = [];
@@ -62,6 +63,7 @@ function showCategoriesList(){
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))){
+                if (aBuscar == undefined || category.name.toLowerCase().indexOf(aBuscar.toLowerCase()) != -1 ) {
 
             htmlContentToAppend += `
             <a href="category-info.html" class="list-group-item list-group-item-action">
@@ -79,7 +81,7 @@ function showCategoriesList(){
                 </div>
             </a>
             `
-        }
+        }}
 
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
@@ -135,6 +137,14 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCategoriesList();
     });
+
+    // Acá buscador
+    document.getElementById("buscador").addEventListener("input",function(){
+        aBuscar=buscador.value;
+        showCategoriesList();
+    });
+
+    // termina buscador
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
