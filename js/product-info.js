@@ -37,9 +37,10 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("productImagesGallery").innerHTML+= `<img class="img m-3" src=${imagen} width="225px">`;
 }
     for (let reco of arrayProduct.relatedProducts){
-    document.getElementById("relatedGallery").innerHTML+=`<img class="img m-3" src=${arrayProducts[parseInt(reco)-1].imgSrc} width="150px">`; 
+    document.getElementById("relatedGallery").innerHTML+=`<img class="img m-3" src=${arrayProducts[parseInt(reco)].imgSrc} width="150px">`; 
     }
   }
+
   function showComments(arrayComments){
     document.getElementById("comments").innerHTML='';
     for (let com of arrayComments){
@@ -53,16 +54,21 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("comments").innerHTML+=`Calificación: ${scoreToAppend} <br>`
         document.getElementById("comments").innerHTML+=`Por el usuario: <strong>${com.user}</strong>. Fecha: ${com.dateTime} <br> ${com.description} <hr>`
     }}
+    // adds date padding - for example january will show as month 1 by default, with date padding it'll show as 01.
+    function addDP(a){ return a<10 ? '0'+a : a};
+
 
 document.getElementById("submit_comment").addEventListener("click",function(e){
-    var now= new Date();
     e.preventDefault();
+    var now= new Date();
+    let dateTime=`${now.getFullYear()}-${addDP(now.getMonth()+1)}-${addDP(now.getDate())} `;
+    dateTime+=`${addDP(now.getHours())}:${addDP(now.getMinutes())}:${addDP(now.getSeconds())}`;
     var retrieved_user = JSON.parse(localStorage.getItem('user'));
     var comentario = {
         'score':valoracion.value,
         'description':comentarios.value,
         'user':retrieved_user.login_user,
-        'dateTime':now,
+        'dateTime':dateTime,
     }
     array_comments.push(comentario);
     showComments(array_comments);
