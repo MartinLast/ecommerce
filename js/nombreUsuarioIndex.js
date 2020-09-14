@@ -4,7 +4,7 @@ function logeado(){
     }
     else{
         var retrieved_user = JSON.parse(localStorage.getItem('user'));
-        document.getElementById('nombreUsuario').innerHTML = `Bienvenido ${retrieved_user.login_user}`;
+        document.getElementById('nombreUsuario').innerHTML = `${retrieved_user.login_user}`;
     }
 }
 function deslogeado(){
