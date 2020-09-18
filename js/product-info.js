@@ -37,7 +37,23 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("productImagesGallery").innerHTML+= `<img class="img m-3" src=${imagen} width="225px">`;
 }
     for (let reco of arrayProduct.relatedProducts){
-    document.getElementById("relatedGallery").innerHTML+=`<img class="img m-3" src=${arrayProducts[parseInt(reco)].imgSrc} width="150px">`; 
+        let product_related = arrayProducts[parseInt(reco)];
+    document.getElementById("relatedGallery").innerHTML+=`
+    <a href="product-info.html" class="list-group-item list-group-item-action">
+        <div class="row">
+            <div class="col-3">
+                <img src="` + product_related.imgSrc + `" alt="` + product_related.description + `" class="img-thumbnail">
+            </div>
+            <div class="col">
+                <div class="d-flex w-100 justify-content-between">
+                    <h4 class="mb-1">`+ product_related.name +`</h4>
+                    <small class="text-muted">` + product_related.cost + ` USD</small>
+                </div>
+                <p class="mb-1">` + product_related.description + `<br> Cantidad vendida: ${product_related.soldCount}</p>
+            </div>
+        </div>
+    </a>
+    ` 
     }
   }
 
