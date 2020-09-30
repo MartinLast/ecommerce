@@ -28,20 +28,15 @@ function showCart(arrayC)
       <th scope="row"><img class="w-25 border" src="" alt=""></th>
       <td class="pt-5"></td>
       <td class="pt-5"><select id="envio" onchange="calculatePrice(0)">
-        <option value="5">Envio Standard</option>
-        <option value="7">Envio Express</option>
-        <option value="15">Envio Premium</option>
+        <option value="0">Sin envio (+0%) </option>
+        <option value="5">Envio Standard (+5%)</option>
+        <option value="7">Envio Express (+7%)</option>
+        <option value="15">Envio Premium (+15%)</option>
       </select></td>
       <th class="pt-5">TOTAL:</th>
       <td class="pt-5" id="total"></td>
     </tr>
-    <tr>
-      <th scope="row"><img class="w-25 border" src="" alt=""></th>
-      <td class="pt-5"></td>
-      <td class="pt-5"></td>
-      <th class="pt-5"></th>
-      <td class="pt-5"></td>
-    </tr>`;
+    `;
     calculatePrice(i-1);
 }
 

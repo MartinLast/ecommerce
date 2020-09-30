@@ -71,7 +71,64 @@
       </thead>
       <tbody id="cartList">
       </tbody>
+      <tfoot>
+        <tr>
+          <th scope="row"><img class="w-25 border" src="" alt=""></th>
+          <td class="pt-5"></td>
+          <td class="pt-5"></td>
+          <th class="pt-5"></th>
+          <td class="pt-5"><button class="btn btn-block btn-primary"  onclick='$("#modalPagar").modal("show");'>Comprar</button></td>
+        </tr>
+      </tfoot>
   </table>
+  </div>
+<div class="modal fade" id="modalPagar">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ingrese sus datos</h5>
+        </div>
+        <div class="modal-body">
+          <form action="index.html">
+            <div>
+              <h4>Datos del comprador</h4>
+              <input type="text" class="form-control" placeholder="Nombre"><br>
+              <input type="text" class="form-control" placeholder="Apellido"><br>
+            </div>
+          <div>
+            <h4>Datos para el envío</h4>
+            <label for="depto">Departamento</label><br>
+            <select class="form-control" id="depto" required>
+              <option value="1">Montevideo</option>
+              <option value="2">Artigas</option>
+              <option value="3">Canelones</option>
+              <option value="4">Cerro Largo</option>
+              <option value="5">Colonia</option>
+              <option value="6">Durazno</option>
+              <option value="7">Flores</option>
+              <option value="8">Florida</option>
+              <option value="9">Lavalleja</option>
+              <option value="10">Maldonado</option>
+              <option value="11">Paysandú</option>
+              <option value="12">Río Negro</option>
+              <option value="13">Rivera</option>
+              <option value="14">Rocha</option>
+              <option value="15">Salto</option>
+              <option value="16">San José</option>
+              <option value="17">Soriano</option>
+              <option value="18">Tacuarembó</option>
+              <option value="19">Treinta y tres</option>
+            </select><br>
+            <input type="text" class="form-control" placeholder="Dirección"><br>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-block btn-success">Confirmar prestamo</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
@@ -87,6 +144,9 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/nombreUsuarioIndex.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 
 </html>
