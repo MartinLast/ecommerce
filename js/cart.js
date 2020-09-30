@@ -16,10 +16,10 @@ function showCart(arrayC)
 
         document.getElementById("cartList").innerHTML+=`
         <tr>
-        <th scope="row"><img class="w-25 border" src="${prod.src}" alt=""></th>
+        <th scope="row"><img class="w-25" src="${prod.src}" alt=""></th>
         <td class="pt-5">${prod.name}</td>
         <td class="pt-5" id="price${i}">${(prod.currency=="USD")? (prod.unitCost*40):(prod.unitCost)}</td>
-        <td class="pt-5"> <input type="number" id="count${i}" value="${prod.count}" min="0" oninput="calculatePrice(${i})"> </td>
+        <td class="pt-5"> <input type="number" id="count${i}" value="${prod.count}" min="0" oninput="calculatePrice(${i})" style="width:50px"> </td>
         <td class="pt-5" id="subtotal${i}">${(prod.currency=="USD")? (prod.unitCost*40):(prod.unitCost)*prod.count}</td>
       </tr>`
       i++;
@@ -27,9 +27,20 @@ function showCart(arrayC)
     document.getElementById("cartList").innerHTML+=`<tr>
       <th scope="row"><img class="w-25 border" src="" alt=""></th>
       <td class="pt-5"></td>
-      <td class="pt-5"></td>
+      <td class="pt-5"><select id="envio" onchange="calculatePrice(0)">
+        <option value="5">Envio Standard</option>
+        <option value="7">Envio Express</option>
+        <option value="15">Envio Premium</option>
+      </select></td>
       <th class="pt-5">TOTAL:</th>
       <td class="pt-5" id="total"></td>
+    </tr>
+    <tr>
+      <th scope="row"><img class="w-25 border" src="" alt=""></th>
+      <td class="pt-5"></td>
+      <td class="pt-5"></td>
+      <th class="pt-5"></th>
+      <td class="pt-5"></td>
     </tr>`;
     calculatePrice(i-1);
 }
@@ -43,5 +54,6 @@ function calculatePrice(a)
     for(j=0;j<i;j++){
         sum +=parseInt((document.getElementById(`subtotal${j}`).innerHTML));
     }
-    document.getElementById("total").innerHTML=sum;
+    let costoEnvio=(document.getElementById("envio").value);
+    document.getElementById("total").innerHTML=`$${Math.round(sum*(1+costoEnvio/100))}`;
 }
