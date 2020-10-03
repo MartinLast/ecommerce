@@ -34,7 +34,7 @@
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="nombreUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="cart.html">Ver carrito</a>
+            <a class="dropdown-item" href="cart.html">Ver carrito    <span class="badge badge-danger" id="cartQTYDisplay"></span></a>
             <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
             <a class="dropdown-item" id="deslogear">Salir</a>
           </div>
@@ -110,6 +110,14 @@
         </div>
       </div>
     </main>
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
     <footer class="text-muted">
       <div class="container">
         <p class="float-right">

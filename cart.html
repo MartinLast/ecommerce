@@ -52,7 +52,7 @@
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="nombreUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="cart.html">Ver carrito</a>
+          <a class="dropdown-item" href="cart.html">Ver carrito    <span class="badge badge-danger" id="cartQTYDisplay"></span></a>
           <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
           <a class="dropdown-item" id="deslogear">Salir</a>
         </div>
@@ -89,11 +89,17 @@
           <h5 class="modal-title">Ingrese sus datos</h5>
         </div>
         <div class="modal-body">
-          <form action="index.html">
+          <form id="needs-validation" novalidate action="index.html">
             <div>
               <h4>Datos del comprador</h4>
-              <input type="text" class="form-control" placeholder="Nombre"><br>
-              <input type="text" class="form-control" placeholder="Apellido"><br>
+              <input type="text" class="form-control" placeholder="Nombre" required><br>
+              <div class="invalid-feedback">
+                Por favor, ingrese su nombre
+              </div>
+              <input type="text" class="form-control" placeholder="Apellido" required><br>
+              <div class="invalid-feedback">
+                Por favor, ingrese su apellido
+              </div>
             </div>
           <div>
             <h4>Datos para el envío</h4>
@@ -119,7 +125,10 @@
               <option value="18">Tacuarembó</option>
               <option value="19">Treinta y tres</option>
             </select><br>
-            <input type="text" class="form-control" placeholder="Dirección"><br>
+            <input type="text" class="form-control" placeholder="Dirección" required><br>
+            <div class="invalid-feedback">
+              Por favor, ingrese una dirección.
+            </div>
           </div>
           <div>
             <h4>Método de pago</h4>
@@ -151,6 +160,19 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/nombreUsuarioIndex.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded",function(){
+      let form=document.getElementById("needs-validation");
+      form.addEventListener("submit",function(event){
+        if (form.checkValidity()===false){
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add("was-validated");
+      });
+    });
+
+  </script>
 </body>
 
 </html>

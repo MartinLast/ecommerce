@@ -1,3 +1,4 @@
+const cart_URL="https://japdevdep.github.io/ecommerce-api/cart/654.json";
 function logeado(){
     if(localStorage.getItem('user') === null){
         location.href="login.html"
@@ -11,5 +12,17 @@ function deslogeado(){
     localStorage.removeItem('user');
     location.href="login.html"   
 }
-document.addEventListener("DOMContentLoaded",logeado);
+function showCartQTY(arrayC){
+    document.getElementById('cartQTYDisplay').innerHTML=`${arrayC.articles.length}`
+}
 document.getElementById('deslogear').addEventListener("click",deslogeado);
+document.addEventListener("DOMContentLoaded", function(e){
+    getJSONData(cart_URL).then(function(resultObj){
+        if (resultObj.status === "ok"){
+            arrayCart=resultObj.data;
+            logeado();
+            showCartQTY(arrayCart);
+            
+        }
+    })});
+
