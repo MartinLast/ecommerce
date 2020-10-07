@@ -33,9 +33,17 @@ function showCart(arrayC)
         <option value="7">Envio Express (+7%)</option>
         <option value="15">Envio Premium (+15%)</option>
       </select></td>
+      <th class="pt-5">Costo Envío:</th>
+      <td class="pt-5" id="totalEnvio"></td>
+    </tr>
+    <tr>
+      <th scope="row"><img class="w-25 border" src="" alt=""></th>
+      <td class="pt-5"></td>
+      <td class="pt-5"></td>
       <th class="pt-5">TOTAL:</th>
       <td class="pt-5" id="total"></td>
     </tr>
+    
     `;
     calculatePrice(i-1);
 }
@@ -50,5 +58,6 @@ function calculatePrice(a)
         sum +=parseInt((document.getElementById(`subtotal${j}`).innerHTML));
     }
     let costoEnvio=(document.getElementById("envio").value);
+    document.getElementById("totalEnvio").innerHTML=`$${Math.round(costoEnvio/100.0*sum)}`
     document.getElementById("total").innerHTML=`$${Math.round(sum*(1+costoEnvio/100))}`;
 }

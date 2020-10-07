@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function(e){
             arrayCart=resultObj.data;
             logeado();
             showCartQTY(arrayCart);
-            
         }
     })});
 
