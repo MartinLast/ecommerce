@@ -25,6 +25,7 @@
     </style>
   </head>
   <body>
+    <div id="alertComprados"></div>
     <nav class="site-header sticky-top py-1 bg-dark">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
         <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a> 
@@ -131,5 +132,15 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>
     <script src="js/nombreUsuarioIndex.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded",function(){
+        let comp=parseInt(localStorage.getItem("compra"));
+        var retrieved_user = JSON.parse(localStorage.getItem('user'));
+        if (comp==1){
+          document.getElementById("alertComprados").innerHTML=`<div class="alert alert-success" role="alert"> Muchas gracias 
+  ${retrieved_user.login_user} por tu compra
+</div>`}
+        localStorage.setItem("compra",0)});
+    </script>
   </body>
 </html>

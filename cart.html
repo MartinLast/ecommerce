@@ -17,11 +17,7 @@
         cursor: pointer;
         text-decoration: underline;
       }
-      span{
-        color:white; 
-        text-align:center; 
-        margin:8px 0px 10px 0px;
-      }
+
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -80,7 +76,7 @@
           <td class="pt-5"></td>
           <td class="pt-5"></td>
           <th class="pt-5"></th>
-          <td class="pt-5"><button class="btn btn-block btn-primary"  onclick='$("#modalPagar").modal("show");'>Comprar</button></td>
+          <td class="pt-5"><button class="btn btn-block btn-primary"  onclick='$("#modalPagar").modal("show"); payData(1);'>Comprar</button></td>
         </tr>
       </tfoot>
   </table>
@@ -92,21 +88,19 @@
           <h5 class="modal-title">Ingrese sus datos</h5>
         </div>
         <div class="modal-body">
-          <form id="needs-validation" novalidate action="index.html">
+          <form id="needs-validation" novalidate action='index.html';>
             <div>
               <h4>Datos del comprador</h4>
-              <input type="text" class="form-control" placeholder="Nombre" required><br>
-              <div class="invalid-feedback">
-                Por favor, ingrese su nombre
-              </div>
-              <input type="text" class="form-control" placeholder="Apellido" required><br>
+              <input type="text" class="form-control" placeholder="Nombre" required>
+              <div class="invalid-feedback">Por favor, ingrese su nombre</div>
+              <input type="text" class="form-control" placeholder="Apellido" required>
               <div class="invalid-feedback">
                 Por favor, ingrese su apellido
               </div>
             </div>
-          <div>
+          <div><br>
             <h4>Datos para el envío</h4>
-            <label for="depto">Departamento</label><br>
+            <label for="depto">Departamento</label>
             <select class="form-control" id="depto" required>
               <option value="1">Montevideo</option>
               <option value="2">Artigas</option>
@@ -128,17 +122,19 @@
               <option value="18">Tacuarembó</option>
               <option value="19">Treinta y tres</option>
             </select><br>
-            <input type="text" class="form-control" placeholder="Dirección" required><br>
+            <input type="text" class="form-control" placeholder="Dirección" required>
             <div class="invalid-feedback">
               Por favor, ingrese una dirección.
             </div>
-          </div>
+          </div><br>
           <div>
             <h4>Método de pago</h4>
-            <select class="form-control" id="metodoPago" required>
+            <select class="form-control" id="metodoPago" required onchange="payData()">
             <option value="1">Tarjeta de crédito</option>
-            <option value="2">Transferencia bancaria</option>
+            <option value="0">Transferencia bancaria</option>
           </select><br>
+          <div id="paymentInfo">
+          </div>
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-block btn-success">Confirmar pago</button>
@@ -171,7 +167,8 @@
           event.preventDefault();
           event.stopPropagation();
         }
-        form.classList.add("was-validated");
+         form.classList.add("was-validated");
+         localStorage.setItem('compra',1);
       });
     });
 

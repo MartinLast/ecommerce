@@ -91,3 +91,17 @@ function eliminate(a){
   }
 
 }
+
+function payData(){
+
+  let a=document.getElementById("metodoPago").value;
+  if (a==1){
+    document.getElementById("paymentInfo").innerHTML=`<input type="text" class="form-control" placeholder="Numero de tarjeta" required>
+    <div class="invalid-feedback">Ingrese su número de tarjeta.</div><br><input type="text" class="form-control" placeholder="Nombre del titular" required>
+    <div class="invalid-feedback">Ingrese el nombre.</div><br>Fecha de expiración:<input type="date" class="form-control" placeholder="Fecha de expiracion" required>
+    <div class="invalid-feedback">Ingrese fecha.</div><br>Código de seguridad:<input type="number" class="form-control" placeholder="" required>
+    <div class="invalid-feedback">Ingrese su código.</div>`
+  }
+  else {document.getElementById("paymentInfo").innerHTML=`<input type="text" class="form-control" placeholder="Numero de cuenta" required>
+  <div class="invalid-feedback">Ingrese su cuenta bancaria.</div>`}
+}
