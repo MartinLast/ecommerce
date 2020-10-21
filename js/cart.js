@@ -19,7 +19,7 @@ function showCart(arrayC)
         <tr>
         <th scope="row"><img class="w-25" src="${prod.src}" alt=""></th>
         <td class="pt-5">${prod.name}</td>
-        <td class="pt-5" id="price${i}">${(prod.currency=="USD")? (prod.unitCost*40):(prod.unitCost)}</td>
+        <td class="pt-5" id="price${i}" style="display: none;">${(prod.currency=="USD")? (prod.unitCost*40):(prod.unitCost)}</td><td class="pt-5">${prod.currency} ${prod.unitCost}</td>
         <td class="pt-5"> <input type="number" id="count${i}" value="${prod.count}" min="0" oninput="calculatePartial(${i})" style="width:50px"> </td>
         <td class="pt-5" id="subtotal${i}">${(prod.currency=="USD")? (prod.unitCost*40):(prod.unitCost)*prod.count}</td>
         <td class="pt-5 hovermouse"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg" onclick="eliminate(${i})">
@@ -96,12 +96,17 @@ function payData(){
 
   let a=document.getElementById("metodoPago").value;
   if (a==1){
-    document.getElementById("paymentInfo").innerHTML=`<input type="text" class="form-control" placeholder="Numero de tarjeta" required>
+    document.getElementById("paymentInfo").innerHTML=`<input type="number" class="form-control" placeholder="Numero de tarjeta" required>
     <div class="invalid-feedback">Ingrese su número de tarjeta.</div><br><input type="text" class="form-control" placeholder="Nombre del titular" required>
     <div class="invalid-feedback">Ingrese el nombre.</div><br>Fecha de expiración:<input type="date" class="form-control" placeholder="Fecha de expiracion" required>
     <div class="invalid-feedback">Ingrese fecha.</div><br>Código de seguridad:<input type="number" class="form-control" placeholder="" required>
     <div class="invalid-feedback">Ingrese su código.</div>`
   }
-  else {document.getElementById("paymentInfo").innerHTML=`<input type="text" class="form-control" placeholder="Numero de cuenta" required>
+  else {document.getElementById("paymentInfo").innerHTML=`Banco:<select id="bankName" class="form-control">
+  <option value="0">Itaú</option>
+  <option value="1" selected>BROU</option>
+  <option value="2">Scotia</option>
+  <option value="3">Santander</option>
+</select><br><input type="number" class="form-control" placeholder="Numero de cuenta" required>
   <div class="invalid-feedback">Ingrese su cuenta bancaria.</div>`}
 }
