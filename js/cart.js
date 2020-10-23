@@ -1,8 +1,11 @@
+let validPayment=0;
 var arrayCart;
 const cartURL="https://japdevdep.github.io/ecommerce-api/cart/654.json";
 let i=0;
 
 document.addEventListener("DOMContentLoaded", function(e){
+    alertPayment(validPayment);
+    payData(1);
     getJSONData(cartURL).then(function(resultObj){
         if (resultObj.status === "ok"){
             arrayCart=resultObj.data;
@@ -89,24 +92,59 @@ function eliminate(a){
     document.getElementById("cartList").innerHTML=``;
     document.getElementById('cartQTYDisplay').innerHTML=`0`;
   }
-
 }
-
 function payData(){
-
   let a=document.getElementById("metodoPago").value;
   if (a==1){
-    document.getElementById("paymentInfo").innerHTML=`<input type="number" class="form-control" placeholder="Numero de tarjeta" required>
-    <div class="invalid-feedback">Ingrese su número de tarjeta.</div><br><input type="text" class="form-control" placeholder="Nombre del titular" required>
-    <div class="invalid-feedback">Ingrese el nombre.</div><br>Fecha de expiración:<input type="date" class="form-control" placeholder="Fecha de expiracion" required>
-    <div class="invalid-feedback">Ingrese fecha.</div><br>Código de seguridad:<input type="number" class="form-control" placeholder="" required>
-    <div class="invalid-feedback">Ingrese su código.</div>`
+    document.getElementById("paymentInfo").innerHTML=`<div><input type="number" class="form-control" placeholder="Numero de tarjeta" required>
+    <div class="invalid-feedback">Ingrese su número de tarjeta.</div></div><br><div><input type="text" class="form-control" placeholder="Nombre del titular" required>
+    <div class="invalid-feedback">Ingrese el nombre.</div></div><br><div>Fecha de expiración:<input type="date" class="form-control" placeholder="Fecha de expiracion" required>
+    <div class="invalid-feedback">Ingrese fecha.</div></div><br><div>Código de seguridad:<input type="number" class="form-control" placeholder="" required>
+    <div class="invalid-feedback">Ingrese su código.</div></div>`
   }
   else {document.getElementById("paymentInfo").innerHTML=`Banco:<select id="bankName" class="form-control">
   <option value="0">Itaú</option>
   <option value="1" selected>BROU</option>
   <option value="2">Scotia</option>
   <option value="3">Santander</option>
-</select><br><input type="number" class="form-control" placeholder="Numero de cuenta" required>
-  <div class="invalid-feedback">Ingrese su cuenta bancaria.</div>`}
+</select><br><div><input type="number" class="form-control" placeholder="Numero de cuenta" required>
+  <div class="invalid-feedback">Ingrese su cuenta bancaria.</div></div>`}
 }
+    document.addEventListener("DOMContentLoaded",function(){
+      let form=document.getElementById("needs-validation1");
+      form.addEventListener("submit",function(event){
+        if (form.checkValidity()===false || validPayment!=2){
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        else {localStorage.setItem('compra',1)}
+          form.classList.add("was-validated");
+         
+      });
+    });
+   document.addEventListener("DOMContentLoaded",function(){
+      let form2=document.getElementById("needs-validation2");
+      form2.addEventListener("submit",function(event){
+        validPayment=0;
+        alertPayment(validPayment);
+        if (form2.checkValidity()===false){
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        else { 
+          event.preventDefault();
+          $("#modalPagar").modal("hide")
+         validPayment=2;
+         alertPayment(validPayment);
+        }
+         form2.classList.add("was-validated");
+
+      });
+    });
+    function alertPayment(v){
+      switch (v){
+        case 0: {document.getElementById("paymentAlerts").innerHTML=`<div style="color:red;"> Método de pago inválido</div>`; break;}
+        case 2: {document.getElementById("paymentAlerts").innerHTML=`<div style="color:green;">Método de pago válido</div>`;break}
+        case 1: {document.getElementById("paymentAlerts").innerHTML=`<div style="color:Orange;">Confirme el Método de pago</div>`;break}
+        }
+      };

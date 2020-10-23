@@ -70,77 +70,56 @@
       </thead>
       <tbody id="cartList">
       </tbody>
-      <tfoot>
-        <tr>
-          <th scope="row"><img class="w-25 border" src="" alt=""></th>
-          <td class="pt-5"></td>
-          <td class="pt-5"></td>
-          <th class="pt-5"></th>
-          <td class="pt-5"><button class="btn btn-block btn-primary"  onclick='$("#modalPagar").modal("show"); payData(1);'>Comprar</button></td>
-        </tr>
-      </tfoot>
   </table>
+  <form id="needs-validation1"  class="needs-validation mt-5 w-50 mx-auto" novalidate action='index.html';>
+    <div>
+      <h4>Datos del comprador</h4>
+      <div><input type="text" class="form-control" placeholder="Nombre" name="formName" required>
+      <div class="invalid-feedback">Por favor, ingrese su nombre</div></div>
+      <div></div><input type="text" class="form-control" placeholder="Apellido" name="formLastName" required>
+      <div class="invalid-feedback"> Por favor, ingrese su apellido</div></div>
+    </div><br>
+  <div>
+    <h4>Datos para el envío</h4>
+    <div><input type="text" class="form-control" placeholder="País" name="formCountry" required>
+    <div class="invalid-feedback">Por favor, ingrese un país.</div></div>
+    <div><input type="text" class="form-control" placeholder="Dirección" name="formAdress" required>
+    <div class="invalid-feedback">Por favor, ingrese una dirección.</div></div>
+    <div><input type="text" class="form-control" placeholder="Calle" name="formStreet" required>
+    <div class="invalid-feedback"> Por favor, ingrese una calle.</div></div>
+    Número puerta: <br><div><input type="number" class="form-control" name="formDoorNumber" required>
+    <div class="invalid-feedback">Por favor, ingrese número de puerta.</div></div>
+    Código postal: <br><div><input type="number" class="form-control" name="formPC"  required>
+    <div class="invalid-feedback">
+      Por favor, ingrese código postal.
+    </div></div>
+  </div><br>
+  <div> <h4>Seleccionar método de pago:</h4><br><td class="pt-5"><button type="button" class="btn btn-secondary" nosubmit onclick='$("#modalPagar").modal("show");'>Seleccionar</button></td></div>
+  <div id="paymentAlerts"></div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-block btn-success">Confirmar compra</button>
   </div>
+  </form>
 <div class="modal fade" id="modalPagar">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Ingrese sus datos</h5>
-        </div>
+        <div class="modal-header"> <h5>Método de Pago</h5></div>
         <div class="modal-body">
-          <form id="needs-validation" novalidate action='index.html';>
-            <div>
-              <h4>Datos del comprador</h4>
-              <input type="text" class="form-control" placeholder="Nombre" required>
-              <div class="invalid-feedback">Por favor, ingrese su nombre</div>
-              <input type="text" class="form-control" placeholder="Apellido" required>
-              <div class="invalid-feedback">
-                Por favor, ingrese su apellido
-              </div>
-            </div>
-          <div><br>
-            <h4>Datos para el envío</h4>
-            <label for="depto">Departamento</label>
-            <select class="form-control" id="depto" required>
-              <option value="1">Montevideo</option>
-              <option value="2">Artigas</option>
-              <option value="3">Canelones</option>
-              <option value="4">Cerro Largo</option>
-              <option value="5">Colonia</option>
-              <option value="6">Durazno</option>
-              <option value="7">Flores</option>
-              <option value="8">Florida</option>
-              <option value="9">Lavalleja</option>
-              <option value="10">Maldonado</option>
-              <option value="11">Paysandú</option>
-              <option value="12">Río Negro</option>
-              <option value="13">Rivera</option>
-              <option value="14">Rocha</option>
-              <option value="15">Salto</option>
-              <option value="16">San José</option>
-              <option value="17">Soriano</option>
-              <option value="18">Tacuarembó</option>
-              <option value="19">Treinta y tres</option>
-            </select><br>
-            <input type="text" class="form-control" placeholder="Dirección" required>
-            <div class="invalid-feedback">
-              Por favor, ingrese una dirección.
-            </div>
-          </div><br>
           <div>
-            <h4>Método de pago</h4>
+            <form id="needs-validation2" class="needs-validation" novalidate onsubmit="return false">
             <select class="form-control" id="metodoPago" required onchange="payData()">
             <option value="1">Tarjeta de crédito</option>
             <option value="0">Transferencia bancaria</option>
           </select><br>
           <div id="paymentInfo">
           </div>
-          </div>
+          </div><br>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-block btn-success">Confirmar pago</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-block btn-success">Confirmar método.</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="validPayment=Math.min(validPayment,1); alertPayment(validPayment);">Cancelar</button>
           </div>
-          </form>
+        </form>
+
         </div>
       </div>
     </div>
@@ -159,20 +138,4 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/nombreUsuarioIndex.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded",function(){
-      let form=document.getElementById("needs-validation");
-      form.addEventListener("submit",function(event){
-        if (form.checkValidity()===false){
-          event.preventDefault();
-          event.stopPropagation();
-        }
-         form.classList.add("was-validated");
-         localStorage.setItem('compra',1);
-      });
-    });
-
-  </script>
-</body>
-
 </html>
