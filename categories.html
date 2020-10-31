@@ -26,21 +26,27 @@
     </style>
   </head>
   <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a> 
-        <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-        <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="nombreUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="cart.html">Ver carrito    <span class="badge badge-danger" id="cartQTYDisplay"></span></a>
-            <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
-            <a class="dropdown-item" id="deslogear">Salir</a>
+    <nav class="navbar navbar-expand-md navbar-dark  site-header sticky-top py-1 bg-dark">
+      <a href="index.html" class="navbar-brand">Inicio</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between " id="navbarCollapse">
+          <div class="navbar-nav container d-flex flex-column flex-md-row justify-content-between">
+              <a class="nav-item nav-link" href="categories.html">Categorías</a>
+              <a class="nav-item nav-link" href="products.html">Productos</a>
+              <a class="nav-item nav-link" href="sell.html">Vender</a>
+              <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id=nombreUsuario></a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="cart.html">Ver carrito    <span class="badge badge-danger" id="cartQTYDisplay"></span></a>
+                  <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+                  <a class="dropdown-item" id="deslogear">Salir</a>
+            </div>
           </div>
-        </div>
-    </nav>>
+      </div>
+  </nav>
     <main role="main" class="pb-5">
         <div class="text-center p-4">
             <h2>Categorías</h2>
