@@ -10,6 +10,7 @@ function logeado(){
 }
 function deslogeado(){
     localStorage.removeItem('user');
+    localStorage.removeItem('userInfo');
     location.href="login.html"   
 }
 function showCartQTY(arrayC){
