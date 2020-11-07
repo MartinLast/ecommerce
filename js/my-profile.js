@@ -1,8 +1,12 @@
 let userInfo={};
+
 document.addEventListener("DOMContentLoaded", function (e) {
     var usernameFetch = JSON.parse(localStorage.getItem('user'));
     document.getElementById('cardUsername').innerHTML = `${usernameFetch.login_user}`;
-    showUserdata();
+    if (localStorage.getItem("userInfo") != null){
+      showUserdata();
+    };
+    
 
 });
 
@@ -12,7 +16,7 @@ function showUserdata(){
     document.getElementById("userLastName").innerHTML=`${userData.userLastName}`;
     document.getElementById("userAge").innerHTML=`${userData.userAge}`;
     document.getElementById("userCountry").innerHTML=`${userData.userCountry}`;
-    document.getElementById("userAddress").innerHTML=`${userData.userAddress}. ${userData.userCountry}`;
+    document.getElementById("userAddress").innerHTML=`${userData.userAddress}`;
     document.getElementById("userPhone").innerHTML=`${userData.userPhone}`;
     document.getElementById("userMail").innerHTML=`${userData.userMail}`;
     document.getElementById("userPhoneCard").innerHTML=`${userData.userPhone}`;
@@ -24,19 +28,18 @@ function showUserdata(){
 }
 
 function updateData(){
-  document.getElementById("modalName").value=document.getElementById("userName").innerHTML;
-  document.getElementById("modalLastName").value=document.getElementById("userLastName").innerHTML;
-  document.getElementById("modalAge").value=document.getElementById("userAge").innerHTML;
-  document.getElementById("modalCountry").value=document.getElementById("userCountry").innerHTML;
-  document.getElementById("modalAddress").value=document.getElementById("userAddress").innerHTML;
-  document.getElementById("modalPhone").value=document.getElementById("userPhone").innerHTML;
-  document.getElementById("modalMail").value=document.getElementById("userMail").innerHTML;
-  var userData=JSON.parse(localStorage.getItem('userInfo'));
-  let profPic=userData.profilePic;
-    if (profPic.trim().length!=0){
-      document.getElementById("modalpp").value=profPic;
-    }
-}
+  document.getElementById("modalName").value=document.getElementById("userName").innerHTML.trim();
+  document.getElementById("modalLastName").value=document.getElementById("userLastName").innerHTML.trim();
+  document.getElementById("modalAge").value=document.getElementById("userAge").innerHTML.trim();
+  document.getElementById("modalCountry").value=document.getElementById("userCountry").innerHTML.trim();
+  document.getElementById("modalAddress").value=document.getElementById("userAddress").innerHTML.trim();
+  document.getElementById("modalPhone").value=document.getElementById("userPhone").innerHTML.trim();
+  document.getElementById("modalMail").value=document.getElementById("userMail").innerHTML.trim();
+  if (localStorage.getItem("userInfo") != null && JSON.parse(localStorage.getItem("userInfo")).profilePic.trim().length>0){
+    document.getElementById("modalpp").value=JSON.parse(localStorage.getItem("userInfo")).profilePic;
+  }};
+ 
+
 
 document.addEventListener("DOMContentLoaded",function(){
     let form=document.getElementById("needs-validation");
