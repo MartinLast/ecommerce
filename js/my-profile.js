@@ -23,6 +23,21 @@ function showUserdata(){
 
 }
 
+function updateData(){
+  document.getElementById("modalName").value=document.getElementById("userName").innerHTML;
+  document.getElementById("modalLastName").value=document.getElementById("userLastName").innerHTML;
+  document.getElementById("modalAge").value=document.getElementById("userAge").innerHTML;
+  document.getElementById("modalCountry").value=document.getElementById("userCountry").innerHTML;
+  document.getElementById("modalAddress").value=document.getElementById("userAddress").innerHTML;
+  document.getElementById("modalPhone").value=document.getElementById("userPhone").innerHTML;
+  document.getElementById("modalMail").value=document.getElementById("userMail").innerHTML;
+  var userData=JSON.parse(localStorage.getItem('userInfo'));
+  let profPic=userData.profilePic;
+    if (profPic.trim().length!=0){
+      document.getElementById("modalpp").value=profPic;
+    }
+}
+
 document.addEventListener("DOMContentLoaded",function(){
     let form=document.getElementById("needs-validation");
     form.addEventListener("submit",function(event){
